@@ -49,6 +49,7 @@
     required: new Set(),
     purchase: new Set(),
     deleted: new Set(),
+    edits: {},
     customItems: [],
     query: "",
     category: "all",
@@ -139,6 +140,24 @@
     });
 
     els.list.addEventListener("click", (event) => {
+      const editButton = event.target.closest("[data-edit-item]");
+      if (editButton) {
+        toggleEditItem(editButton.dataset.id);
+        return;
+      }
+
+      const cancelEditButton = event.target.closest("[data-cancel-edit]");
+      if (cancelEditButton) {
+        render();
+        return;
+      }
+
+      const saveEditButton = event.target.closest("[data-save-edit]");
+      if (saveEditButton) {
+        saveEditItem(saveEditButton.dataset.id);
+        return;
+      }
+
       const deleteButton = event.target.closest("[data-delete-item]");
       if (!deleteButton) return;
       deleteItem(deleteButton.dataset.id);
@@ -168,6 +187,7 @@
       state.required.clear();
       state.purchase.clear();
       state.deleted.clear();
+      state.edits = {};
       state.customItems = [];
       rebuildItems();
       hydrateCategories();
@@ -306,6 +326,7 @@
       <div class="flags" aria-label="必須と購入必要の設定">
         <button class="flag flag-required" type="button" data-flag="required" data-id="">必須</button>
         <button class="flag flag-purchase" type="button" data-flag="purchase" data-id="">購入</button>
+        <button class="flag" type="button" data-edit-item data-id="">編集</button>
         <button class="flag flag-delete" type="button" data-delete-item data-id="">削除</button>
       </div>
     `;
@@ -360,6 +381,50 @@
     });
 
     return row;
+  }
+
+  function renderEditForm(item) {
+    const form = document.createElement("div");
+    form.className = "edit-form";
+    form.dataset.editForm = item.id;
+    form.innerHTML = `
+      <div class="form-grid">
+        <label>
+          <span>アイテム名</span>
+          <input data-edit-field="item" type="text" required>
+        </label>
+        <label>
+          <span>大カテゴリ</span>
+          <input data-edit-field="major" type="text" list="categoryOptions" required>
+        </label>
+        <label>
+          <span>中カテゴリ</span>
+          <input data-edit-field="middle" type="text">
+        </label>
+        <label class="wide">
+          <span>備考</span>
+          <input data-edit-field="note" type="text">
+        </label>
+      </div>
+      <div class="form-options">
+        <label><input data-edit-route="air" type="checkbox"> 航空便</label>
+        <label><input data-edit-route="sea" type="checkbox"> 船便</label>
+        <label><input data-edit-route="carry" type="checkbox"> 手荷物</label>
+      </div>
+      <div class="form-actions">
+        <button class="button primary" type="button" data-save-edit data-id="">保存</button>
+        <button class="button secondary" type="button" data-cancel-edit>キャンセル</button>
+      </div>
+    `;
+    form.querySelector('[data-edit-field="item"]').value = item.item;
+    form.querySelector('[data-edit-field="major"]').value = item.major;
+    form.querySelector('[data-edit-field="middle"]').value = item.middle;
+    form.querySelector('[data-edit-field="note"]').value = item.note;
+    form.querySelector('[data-edit-route="air"]').checked = item.routes.air;
+    form.querySelector('[data-edit-route="sea"]').checked = item.routes.sea;
+    form.querySelector('[data-edit-route="carry"]').checked = item.routes.carry;
+    form.querySelector("[data-save-edit]").dataset.id = item.id;
+    return form;
   }
 
   function setChecked(id, checked) {
@@ -417,6 +482,56 @@
     showToast("項目を追加しました。");
   }
 
+  function toggleEditItem(id) {
+    const row = els.list.querySelector(`[data-edit-item][data-id="${cssEscape(id)}"]`)?.closest(".item-row");
+    const item = items.find((entry) => entry.id === id);
+    if (!row || !item) return;
+    const existing = row.querySelector("[data-edit-form]");
+    if (existing) {
+      existing.remove();
+      return;
+    }
+    row.append(renderEditForm(item));
+    row.querySelector('[data-edit-field="item"]').focus();
+  }
+
+  function saveEditItem(id) {
+    const form = els.list.querySelector(`[data-edit-form="${cssEscape(id)}"]`);
+    const itemName = form?.querySelector('[data-edit-field="item"]').value.trim();
+    const major = form?.querySelector('[data-edit-field="major"]').value.trim();
+    if (!form || !itemName || !major) {
+      showToast("アイテム名と大カテゴリを入力してください。");
+      return;
+    }
+
+    const updated = {
+      id,
+      major,
+      middle: form.querySelector('[data-edit-field="middle"]').value.trim(),
+      item: itemName,
+      routes: {
+        air: form.querySelector('[data-edit-route="air"]').checked,
+        sea: form.querySelector('[data-edit-route="sea"]').checked,
+        carry: form.querySelector('[data-edit-route="carry"]').checked
+      },
+      note: form.querySelector('[data-edit-field="note"]').value.trim()
+    };
+
+    if (id.startsWith("custom-")) {
+      state.customItems = state.customItems.map((entry) =>
+        entry.id === id ? { ...entry, ...updated, status: entry.status || "追加", custom: true } : entry
+      );
+    } else {
+      state.edits[id] = updated;
+    }
+
+    rebuildItems();
+    hydrateCategories();
+    saveLocalState();
+    render();
+    showToast("項目を更新しました。");
+  }
+
   function deleteItem(id) {
     const item = items.find((entry) => entry.id === id);
     if (!item) return;
@@ -440,7 +555,11 @@
   function rebuildItems() {
     const customItems = state.customItems.map(normalizeCustomItem).filter(Boolean);
     state.customItems = customItems;
-    items = [...baseItems, ...customItems].filter((item) => !state.deleted.has(item.id));
+    const editedBaseItems = baseItems.map((item) => {
+      const edit = state.edits[item.id];
+      return edit ? { ...item, ...edit, routes: normalizeRoutes(edit.routes) } : item;
+    });
+    items = [...editedBaseItems, ...customItems].filter((item) => !state.deleted.has(item.id));
   }
 
   function normalizeCustomItem(item) {
@@ -465,6 +584,14 @@
     els.addForm.reset();
   }
 
+  function normalizeRoutes(routes) {
+    return {
+      air: Boolean(routes && routes.air),
+      sea: Boolean(routes && routes.sea),
+      carry: Boolean(routes && routes.carry)
+    };
+  }
+
   function loadLocalState() {
     try {
       const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
@@ -472,12 +599,14 @@
       state.required = new Set(Array.isArray(saved.required) ? saved.required : []);
       state.purchase = new Set(Array.isArray(saved.purchase) ? saved.purchase : []);
       state.deleted = new Set(Array.isArray(saved.deleted) ? saved.deleted : []);
+      state.edits = isPlainObject(saved.edits) ? saved.edits : {};
       state.customItems = Array.isArray(saved.customItems) ? saved.customItems : [];
     } catch {
       state.checked = new Set();
       state.required = new Set();
       state.purchase = new Set();
       state.deleted = new Set();
+      state.edits = {};
       state.customItems = [];
     }
   }
@@ -488,6 +617,7 @@
       required: Array.from(state.required),
       purchase: Array.from(state.purchase),
       deleted: Array.from(state.deleted),
+      edits: state.edits,
       customItems: state.customItems,
       updatedAt: new Date().toISOString()
     };
@@ -502,6 +632,7 @@
       const payload = JSON.parse(decodeBase64Url(encoded));
       if (!Array.isArray(payload.checked)) return;
       state.deleted = new Set(Array.isArray(payload.deleted) ? payload.deleted : []);
+      state.edits = isPlainObject(payload.edits) ? payload.edits : {};
       state.customItems = Array.isArray(payload.customItems) ? payload.customItems : [];
       rebuildItems();
       state.checked = new Set(payload.checked.filter((id) => items.some((item) => item.id === id)));
@@ -520,6 +651,7 @@
       required: Array.from(state.required),
       purchase: Array.from(state.purchase),
       deleted: Array.from(state.deleted),
+      edits: state.edits,
       customItems: state.customItems,
       updatedAt: new Date().toISOString()
     };
@@ -542,6 +674,7 @@
       required: Array.from(state.required),
       purchase: Array.from(state.purchase),
       deleted: Array.from(state.deleted),
+      edits: state.edits,
       customItems: state.customItems,
       updatedAt: new Date().toISOString()
     };
@@ -563,6 +696,7 @@
         const payload = JSON.parse(String(reader.result || "{}"));
         if (!Array.isArray(payload.checked)) throw new Error("invalid payload");
         state.deleted = new Set(Array.isArray(payload.deleted) ? payload.deleted : []);
+        state.edits = isPlainObject(payload.edits) ? payload.edits : {};
         state.customItems = Array.isArray(payload.customItems) ? payload.customItems : [];
         rebuildItems();
         hydrateCategories();
@@ -606,6 +740,17 @@
 
   function unique(list) {
     return Array.from(new Set(list.filter(Boolean)));
+  }
+
+  function isPlainObject(value) {
+    return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+  }
+
+  function cssEscape(value) {
+    if (window.CSS && typeof window.CSS.escape === "function") {
+      return window.CSS.escape(value);
+    }
+    return String(value).replace(/"/g, '\\"');
   }
 
   function pruneState() {

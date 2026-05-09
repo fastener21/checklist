@@ -534,9 +534,9 @@ select {
 
 .flags {
   display: grid;
-  grid-template-columns: repeat(3, minmax(58px, 1fr));
+  grid-template-columns: repeat(2, minmax(58px, 1fr));
   gap: 6px;
-  min-width: 190px;
+  min-width: 126px;
 }
 
 .flag {
@@ -565,6 +565,14 @@ select {
 
 .flag-delete {
   color: var(--accent);
+}
+
+.edit-form {
+  grid-column: 2 / -1;
+  padding: 12px;
+  background: #fbfdff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
 }
 
 .empty {
@@ -662,7 +670,8 @@ select {
   }
 
   .routes,
-  .flags {
+  .flags,
+  .edit-form {
     grid-column: 2;
     justify-content: flex-start;
     min-width: 0;
