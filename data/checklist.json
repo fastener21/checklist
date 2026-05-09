@@ -1,0 +1,1306 @@
+{
+  "title": "赴任持ち物リスト ブリュッセル版",
+  "sourceFile": "赴任持ち物リスト_ブリュッセル版_v6.xlsx",
+  "items": [
+    {
+      "id": "item-001",
+      "major": "電子機器",
+      "middle": "通信",
+      "item": "スマホ",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-002",
+      "major": "電子機器",
+      "middle": "通信",
+      "item": "PC",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-003",
+      "major": "電子機器",
+      "middle": "電源",
+      "item": "充電器",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-004",
+      "major": "電子機器",
+      "middle": "電源",
+      "item": "延長コード（日本式）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-005",
+      "major": "電子機器",
+      "middle": "電源",
+      "item": "変換プラグ（タイプE）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "ベルギーは丸ピン2本タイプE。複数推奨",
+      "status": "✏️ 更新"
+    },
+    {
+      "id": "item-006",
+      "major": "電子機器",
+      "middle": "電源",
+      "item": "電圧変換器（トランス）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "100V専用の日本製家電を使う場合に必要",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-007",
+      "major": "電子機器",
+      "middle": "データ",
+      "item": "外付けHDD / USBメモリ",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "データバックアップ・日本コンテンツ持ち出し用",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-008",
+      "major": "家電",
+      "middle": "キッチン",
+      "item": "炊飯器（海外対応）",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "220V対応モデル必須",
+      "status": ""
+    },
+    {
+      "id": "item-009",
+      "major": "家電",
+      "middle": "キッチン",
+      "item": "電気ケトル（220V）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "220V対応必須",
+      "status": ""
+    },
+    {
+      "id": "item-010",
+      "major": "家電",
+      "middle": "生活",
+      "item": "ドライヤー（対応確認）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-011",
+      "major": "工具",
+      "middle": "基本",
+      "item": "ドライバー",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地Bricomarché等でも入手可",
+      "status": ""
+    },
+    {
+      "id": "item-012",
+      "major": "工具",
+      "middle": "基本",
+      "item": "六角レンチ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地調達も可",
+      "status": ""
+    },
+    {
+      "id": "item-013",
+      "major": "工具",
+      "middle": "基本",
+      "item": "ペンチ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地調達も可",
+      "status": ""
+    },
+    {
+      "id": "item-014",
+      "major": "衣類",
+      "middle": "仕事",
+      "item": "スーツ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-015",
+      "major": "衣類",
+      "middle": "仕事",
+      "item": "ワイシャツ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-016",
+      "major": "衣類",
+      "middle": "カジュアル",
+      "item": "普段着",
+      "routes": {
+        "air": true,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-017",
+      "major": "衣類",
+      "middle": "防寒",
+      "item": "ヒートテック",
+      "routes": {
+        "air": true,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-018",
+      "major": "衣類",
+      "middle": "防寒",
+      "item": "コート・厚手ジャケット",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "ベルギーの冬（11〜3月）は寒い。現地購入は高め",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-019",
+      "major": "衣類",
+      "middle": "雨対策",
+      "item": "レインジャケット",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-020",
+      "major": "衣類",
+      "middle": "雨対策",
+      "item": "折り畳み傘（高品質）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "年中雨が多い。複数本推奨",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-021",
+      "major": "靴",
+      "middle": "仕事",
+      "item": "革靴",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-022",
+      "major": "靴",
+      "middle": "普段",
+      "item": "スニーカー",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "欧州は靴が豊富。現地調達も検討可",
+      "status": ""
+    },
+    {
+      "id": "item-023",
+      "major": "靴",
+      "middle": "機能",
+      "item": "防水靴",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-024",
+      "major": "靴",
+      "middle": "機能",
+      "item": "長靴または防水ブーツ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "雨・泥道対策。ベルギーには必須",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-025",
+      "major": "生活用品",
+      "middle": "寝具",
+      "item": "枕",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "IKEAで安く買えるが、こだわりあれば持参",
+      "status": ""
+    },
+    {
+      "id": "item-026",
+      "major": "生活用品",
+      "middle": "寝具",
+      "item": "シーツ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "IKEA等で入手可",
+      "status": ""
+    },
+    {
+      "id": "item-027",
+      "major": "生活用品",
+      "middle": "衛生",
+      "item": "爪切り",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-028",
+      "major": "生活用品",
+      "middle": "衛生",
+      "item": "耳かき",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-029",
+      "major": "生活用品",
+      "middle": "洗濯",
+      "item": "洗濯ネット",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-030",
+      "major": "生活用品",
+      "middle": "収納",
+      "item": "室内スリッパ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地では日本式が見つかりにくい",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-031",
+      "major": "生活用品",
+      "middle": "収納",
+      "item": "ハンガー（多め）",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "意外と現地調達が不便",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-032",
+      "major": "生活用品",
+      "middle": "収納",
+      "item": "S字フック・突っ張り棒",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "日本と住居収納が異なるため便利",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-033",
+      "major": "キッチン",
+      "middle": "基本",
+      "item": "フライパン",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "IKEAやCarrefourで即日調達可。省いても可",
+      "status": ""
+    },
+    {
+      "id": "item-034",
+      "major": "キッチン",
+      "middle": "基本",
+      "item": "鍋",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "現地調達も可",
+      "status": ""
+    },
+    {
+      "id": "item-035",
+      "major": "キッチン",
+      "middle": "基本",
+      "item": "包丁",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-036",
+      "major": "キッチン",
+      "middle": "基本",
+      "item": "まな板",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "現地調達も可",
+      "status": ""
+    },
+    {
+      "id": "item-037",
+      "major": "キッチン",
+      "middle": "基本",
+      "item": "菜箸・お玉・フライ返し",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-038",
+      "major": "キッチン",
+      "middle": "補助",
+      "item": "ピーラー",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-039",
+      "major": "キッチン",
+      "middle": "補助",
+      "item": "キッチンバサミ",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-040",
+      "major": "キッチン",
+      "middle": "補助",
+      "item": "計量スプーン",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-041",
+      "major": "食品",
+      "middle": "即席",
+      "item": "レトルト食品",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-042",
+      "major": "食品",
+      "middle": "即席",
+      "item": "インスタント味噌汁",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-043",
+      "major": "食品",
+      "middle": "即席",
+      "item": "米（日本米・数kg）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "現地調達可だが割高。最初の数日分に",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-044",
+      "major": "食品",
+      "middle": "調味料",
+      "item": "醤油・味噌",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-045",
+      "major": "食品",
+      "middle": "調味料",
+      "item": "めんつゆ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地入手困難。多めに持参推奨",
+      "status": ""
+    },
+    {
+      "id": "item-046",
+      "major": "食品",
+      "middle": "調味料",
+      "item": "白だし",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地入手困難",
+      "status": ""
+    },
+    {
+      "id": "item-047",
+      "major": "食品",
+      "middle": "調味料",
+      "item": "みりん・料理酒",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地では品薄・高価。多めに持参推奨",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-048",
+      "major": "食品",
+      "middle": "調味料",
+      "item": "顆粒だし（ほんだし）",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "意外と現地で見つからない",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-049",
+      "major": "食品",
+      "middle": "乾物",
+      "item": "かつおぶし・海苔",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-050",
+      "major": "医療・衛生",
+      "middle": "常備薬",
+      "item": "風邪薬",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-051",
+      "major": "医療・衛生",
+      "middle": "常備薬",
+      "item": "胃薬",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-052",
+      "major": "医療・衛生",
+      "middle": "常備薬",
+      "item": "整腸剤（正露丸等）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "欧州では同成分でも別製品。使い慣れたものを",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-053",
+      "major": "医療・衛生",
+      "middle": "常備薬",
+      "item": "頭痛薬（ロキソニン等）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "現地処方箋が必要なことも",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-054",
+      "major": "医療・衛生",
+      "middle": "常備薬",
+      "item": "子供用解熱剤（カロナール等）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "現地は処方箋が必要なことも。多めに",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-055",
+      "major": "医療・衛生",
+      "middle": "常備薬",
+      "item": "花粉症・アレルギー薬",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "日本のものが現地で入手しにくい",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-056",
+      "major": "医療・衛生",
+      "middle": "衛生",
+      "item": "体温計",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-057",
+      "major": "医療・衛生",
+      "middle": "衛生",
+      "item": "日焼け止め（多め）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "ノンケミカル系は欧州で選択肢少ない",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-058",
+      "major": "医療・衛生",
+      "middle": "衛生",
+      "item": "ハンディトワレ",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-059",
+      "major": "医療・衛生",
+      "middle": "衛生",
+      "item": "コンタクトレンズ・ケア用品（1〜2年分）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "日本ブランドは現地入手困難。1〜2年分持参。レンズ本体は手荷物に",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-060",
+      "major": "書類",
+      "middle": "重要",
+      "item": "パスポート",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-061",
+      "major": "書類",
+      "middle": "重要",
+      "item": "ビザ",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-062",
+      "major": "書類",
+      "middle": "重要",
+      "item": "印鑑・朱肉",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "日本向け書類手続きで必要になることも",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-063",
+      "major": "書類",
+      "middle": "控え",
+      "item": "コピー一式",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-064",
+      "major": "子供",
+      "middle": "学習",
+      "item": "日本語教材（参考書・問題集）",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地調達不可。数学・英語・国語など",
+      "status": "✏️ 更新"
+    },
+    {
+      "id": "item-065",
+      "major": "子供",
+      "middle": "学習",
+      "item": "文房具",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": ""
+    },
+    {
+      "id": "item-066",
+      "major": "子供",
+      "middle": "娯楽",
+      "item": "お気に入りのゲーム・マンガ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "日本語コンテンツは現地入手困難。精神的安定にも",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-067",
+      "major": "書類",
+      "middle": "重要",
+      "item": "赴任辞令・雇用契約書・会社レター",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "入国審査で必要になることがある",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-068",
+      "major": "書類",
+      "middle": "重要",
+      "item": "海外旅行保険・赴任保険の証書",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-069",
+      "major": "書類",
+      "middle": "重要",
+      "item": "戸籍謄本・出生証明・婚姻証明",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "現地登録手続きに必要。アポスティーユ取得も検討",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-070",
+      "major": "書類",
+      "middle": "重要",
+      "item": "子供の予防接種記録・学校書類",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "現地学校入学手続きに必要",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-071",
+      "major": "書類",
+      "middle": "重要",
+      "item": "英文の薬剤証明・医師の診断書",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "持参する薬の証明。規制対象薬は特に必須",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-072",
+      "major": "書類",
+      "middle": "運転",
+      "item": "国際運転免許証",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "ベルギーでは日本の免許は直接使用不可",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-073",
+      "major": "電子機器",
+      "middle": "通信",
+      "item": "eSIM / SIMカード（渡航前設定）",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "到着初日から通信できるよう出発前に準備",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-074",
+      "major": "電子機器",
+      "middle": "通信",
+      "item": "モバイルバッテリー",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-075",
+      "major": "電子機器",
+      "middle": "仕事",
+      "item": "会社PC・社員証・認証デバイス",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-076",
+      "major": "医療・衛生",
+      "middle": "衛生",
+      "item": "眼鏡（予備含む）",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "現地での調達に時間がかかることも",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-077",
+      "major": "生活用品",
+      "middle": "衛生",
+      "item": "タオル数枚",
+      "routes": {
+        "air": true,
+        "sea": true,
+        "carry": false
+      },
+      "note": "船便到着までの分は航空便または手荷物に",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-078",
+      "major": "食品",
+      "middle": "注意",
+      "item": "⚠️ 肉・乳製品含む食品は持込禁止",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": false
+      },
+      "note": "EU外からの肉・乳製品は原則持込不可。カップ麺・レトルト・ふりかけ等も注意",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-079",
+      "major": "衣類",
+      "middle": "基本",
+      "item": "下着（多め）",
+      "routes": {
+        "air": true,
+        "sea": true,
+        "carry": false
+      },
+      "note": "欧州サイズが合わないことも。日本から多めに",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-080",
+      "major": "衣類",
+      "middle": "基本",
+      "item": "靴下（多め）",
+      "routes": {
+        "air": true,
+        "sea": true,
+        "carry": false
+      },
+      "note": "同上",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-081",
+      "major": "衣類",
+      "middle": "基本",
+      "item": "部屋着・パジャマ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-082",
+      "major": "医療・衛生",
+      "middle": "スキンケア",
+      "item": "化粧水・乳液・美容液",
+      "routes": {
+        "air": true,
+        "sea": true,
+        "carry": false
+      },
+      "note": "慣れたブランドは現地で見つかりにくい。多めに",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-083",
+      "major": "医療・衛生",
+      "middle": "スキンケア",
+      "item": "洗顔料・メイク落とし",
+      "routes": {
+        "air": true,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地品は肌に合わないことも",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-084",
+      "major": "医療・衛生",
+      "middle": "スキンケア",
+      "item": "整髪料・ヘアブラシ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "日本製品は現地で割高",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-085",
+      "major": "医療・衛生",
+      "middle": "衛生",
+      "item": "カミソリ・シェーバー替え刃",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "替え刃の規格が異なることがある",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-086",
+      "major": "医療・衛生",
+      "middle": "衛生",
+      "item": "生理用品（多め）",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地品は使い心地が異なる場合も",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-087",
+      "major": "医療・衛生",
+      "middle": "衛生",
+      "item": "マスク",
+      "routes": {
+        "air": true,
+        "sea": true,
+        "carry": false
+      },
+      "note": "日本製の品質・使い心地は優秀",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-088",
+      "major": "医療・衛生",
+      "middle": "衛生",
+      "item": "耳栓・アイマスク",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "長距離フライトや環境変化時に重宝",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-089",
+      "major": "医療・衛生",
+      "middle": "衛生",
+      "item": "救急用品（絆創膏・包帯等）",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": false
+      },
+      "note": "",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-090",
+      "major": "電子機器",
+      "middle": "通信",
+      "item": "モバイルWi-Fiルーター",
+      "routes": {
+        "air": true,
+        "sea": false,
+        "carry": true
+      },
+      "note": "到着直後〜SIM契約前のつなぎに便利",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-091",
+      "major": "生活用品",
+      "middle": "衛生",
+      "item": "電動歯ブラシ替えブラシ（多め）",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "規格が異なり現地で替えが見つからないことも",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-092",
+      "major": "食品",
+      "middle": "乾物",
+      "item": "塩昆布・ふりかけ・お茶漬けの素",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "海外生活で地味に重宝。現地入手ほぼ不可",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-093",
+      "major": "食品",
+      "middle": "乾物",
+      "item": "梅系乾燥食品・梅干し",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "現地入手困難。ホームシック対策にも",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-094",
+      "major": "食品",
+      "middle": "調味料",
+      "item": "ポン酢・焼き肉のタレ",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "日系スーパーでも入手しにくい",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-095",
+      "major": "食品",
+      "middle": "調味料",
+      "item": "鶏がらスープの素",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "中華系調味料だが日本品は現地で見つかりにくい",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-096",
+      "major": "書類",
+      "middle": "仕事",
+      "item": "名刺",
+      "routes": {
+        "air": false,
+        "sea": false,
+        "carry": true
+      },
+      "note": "現地でも日本式の名刺交換の場面あり",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-097",
+      "major": "子供",
+      "middle": "学習",
+      "item": "教科書（転校前の学校のもの）",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "補習校・家庭学習用。渡航前に学校に相談",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-098",
+      "major": "子供",
+      "middle": "娯楽",
+      "item": "ドリームスイッチ等の読み聞かせ機器",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "日本語絵本の代わりに。場所をとらず多コンテンツ",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-099",
+      "major": "生活用品",
+      "middle": "収納",
+      "item": "100均の便利グッズ（調理小物・収納等）",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "海外では同等品が10倍以上することも。事前に揃えておく",
+      "status": "🆕 追加"
+    },
+    {
+      "id": "item-100",
+      "major": "電子機器",
+      "middle": "セキュリティ",
+      "item": "簡易シュレッダー",
+      "routes": {
+        "air": false,
+        "sea": true,
+        "carry": false
+      },
+      "note": "個人情報入り書類の廃棄に。現地では分別が不明確なことも",
+      "status": "🆕 追加"
+    }
+  ]
+}
