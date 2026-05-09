@@ -1,6 +1,7 @@
 (function () {
   const data = window.CHECKLIST_DATA || { title: "", items: [] };
-  const items = data.items;
+  const baseItems = data.items.map((item) => ({ ...item, custom: false }));
+  let items = [];
   const storageKey = "brussels-checklist-state-v1";
 
   const els = {
@@ -24,6 +25,19 @@
     copyShare: document.querySelector("#copyShare"),
     exportState: document.querySelector("#exportState"),
     importState: document.querySelector("#importState"),
+    toggleAddForm: document.querySelector("#toggleAddForm"),
+    addForm: document.querySelector("#addForm"),
+    cancelAdd: document.querySelector("#cancelAdd"),
+    newItemName: document.querySelector("#newItemName"),
+    newMajor: document.querySelector("#newMajor"),
+    newMiddle: document.querySelector("#newMiddle"),
+    newNote: document.querySelector("#newNote"),
+    newAir: document.querySelector("#newAir"),
+    newSea: document.querySelector("#newSea"),
+    newCarry: document.querySelector("#newCarry"),
+    newRequired: document.querySelector("#newRequired"),
+    newPurchase: document.querySelector("#newPurchase"),
+    categoryOptions: document.querySelector("#categoryOptions"),
     checkVisible: document.querySelector("#checkVisible"),
     uncheckVisible: document.querySelector("#uncheckVisible"),
     resetAll: document.querySelector("#resetAll"),
@@ -34,6 +48,8 @@
     checked: new Set(),
     required: new Set(),
     purchase: new Set(),
+    deleted: new Set(),
+    customItems: [],
     query: "",
     category: "all",
     route: "all",
@@ -47,9 +63,10 @@
   init();
 
   function init() {
-    hydrateCategories();
     loadLocalState();
     loadHashState();
+    rebuildItems();
+    hydrateCategories();
     bindEvents();
     render();
     registerServiceWorker();
@@ -74,6 +91,21 @@
     els.purchaseOnly.addEventListener("change", () => {
       state.purchaseOnly = els.purchaseOnly.checked;
       render();
+    });
+
+    els.toggleAddForm.addEventListener("click", () => {
+      els.addForm.hidden = !els.addForm.hidden;
+      if (!els.addForm.hidden) els.newItemName.focus();
+    });
+
+    els.cancelAdd.addEventListener("click", () => {
+      clearAddForm();
+      els.addForm.hidden = true;
+    });
+
+    els.addForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      addCustomItem();
     });
 
     els.routeButtons.forEach((button) => {
@@ -106,6 +138,12 @@
       render();
     });
 
+    els.list.addEventListener("click", (event) => {
+      const deleteButton = event.target.closest("[data-delete-item]");
+      if (!deleteButton) return;
+      deleteItem(deleteButton.dataset.id);
+    });
+
     els.copyShare.addEventListener("click", copyShareLink);
     els.exportState.addEventListener("click", exportState);
     els.importState.addEventListener("change", importState);
@@ -129,23 +167,41 @@
       state.checked.clear();
       state.required.clear();
       state.purchase.clear();
+      state.deleted.clear();
+      state.customItems = [];
+      rebuildItems();
+      hydrateCategories();
       saveLocalState();
       render();
-      showToast("チェック状態と印をリセットしました。");
+      showToast("チェック状態、印、追加項目をリセットしました。");
     });
   }
 
   function hydrateCategories() {
     const categories = unique(items.map((item) => item.major)).sort((a, b) => a.localeCompare(b, "ja"));
+    const current = state.category;
+    els.category.replaceChildren();
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = "すべてのカテゴリ";
+    els.category.append(allOption);
+    els.categoryOptions.replaceChildren();
     categories.forEach((category) => {
       const option = document.createElement("option");
       option.value = category;
       option.textContent = category;
       els.category.append(option);
+
+      const dataOption = document.createElement("option");
+      dataOption.value = category;
+      els.categoryOptions.append(dataOption);
     });
+    state.category = current === "all" || categories.includes(current) ? current : "all";
+    els.category.value = state.category;
   }
 
   function render() {
+    pruneState();
     visibleItems = getVisibleItems();
     renderSummary();
     renderFilters();
@@ -250,6 +306,7 @@
       <div class="flags" aria-label="必須と購入必要の設定">
         <button class="flag flag-required" type="button" data-flag="required" data-id="">必須</button>
         <button class="flag flag-purchase" type="button" data-flag="purchase" data-id="">購入</button>
+        <button class="flag flag-delete" type="button" data-delete-item data-id="">削除</button>
       </div>
     `;
 
@@ -324,16 +381,104 @@
     saveLocalState();
   }
 
+  function addCustomItem() {
+    const itemName = els.newItemName.value.trim();
+    const major = els.newMajor.value.trim();
+    if (!itemName || !major) {
+      showToast("アイテム名と大カテゴリを入力してください。");
+      return;
+    }
+
+    const id = `custom-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
+    const item = {
+      id,
+      major,
+      middle: els.newMiddle.value.trim(),
+      item: itemName,
+      routes: {
+        air: els.newAir.checked,
+        sea: els.newSea.checked,
+        carry: els.newCarry.checked
+      },
+      note: els.newNote.value.trim(),
+      status: "追加",
+      custom: true
+    };
+
+    state.customItems.push(item);
+    if (els.newRequired.checked) state.required.add(id);
+    if (els.newPurchase.checked) state.purchase.add(id);
+    rebuildItems();
+    hydrateCategories();
+    saveLocalState();
+    clearAddForm();
+    els.addForm.hidden = true;
+    render();
+    showToast("項目を追加しました。");
+  }
+
+  function deleteItem(id) {
+    const item = items.find((entry) => entry.id === id);
+    if (!item) return;
+    if (!window.confirm(`「${item.item}」を削除しますか？`)) return;
+
+    if (item.custom) {
+      state.customItems = state.customItems.filter((entry) => entry.id !== id);
+    } else {
+      state.deleted.add(id);
+    }
+    state.checked.delete(id);
+    state.required.delete(id);
+    state.purchase.delete(id);
+    rebuildItems();
+    hydrateCategories();
+    saveLocalState();
+    render();
+    showToast("項目を削除しました。");
+  }
+
+  function rebuildItems() {
+    const customItems = state.customItems.map(normalizeCustomItem).filter(Boolean);
+    state.customItems = customItems;
+    items = [...baseItems, ...customItems].filter((item) => !state.deleted.has(item.id));
+  }
+
+  function normalizeCustomItem(item) {
+    if (!item || !item.id || !item.item || !item.major) return null;
+    return {
+      id: String(item.id),
+      major: String(item.major || ""),
+      middle: String(item.middle || ""),
+      item: String(item.item || ""),
+      routes: {
+        air: Boolean(item.routes && item.routes.air),
+        sea: Boolean(item.routes && item.routes.sea),
+        carry: Boolean(item.routes && item.routes.carry)
+      },
+      note: String(item.note || ""),
+      status: String(item.status || "追加"),
+      custom: true
+    };
+  }
+
+  function clearAddForm() {
+    els.addForm.reset();
+  }
+
   function loadLocalState() {
     try {
       const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
       state.checked = new Set(Array.isArray(saved.checked) ? saved.checked : []);
       state.required = new Set(Array.isArray(saved.required) ? saved.required : []);
       state.purchase = new Set(Array.isArray(saved.purchase) ? saved.purchase : []);
+      state.deleted = new Set(Array.isArray(saved.deleted) ? saved.deleted : []);
+      state.customItems = Array.isArray(saved.customItems) ? saved.customItems : [];
     } catch {
       state.checked = new Set();
       state.required = new Set();
       state.purchase = new Set();
+      state.deleted = new Set();
+      state.customItems = [];
     }
   }
 
@@ -342,6 +487,8 @@
       checked: Array.from(state.checked),
       required: Array.from(state.required),
       purchase: Array.from(state.purchase),
+      deleted: Array.from(state.deleted),
+      customItems: state.customItems,
       updatedAt: new Date().toISOString()
     };
     localStorage.setItem(storageKey, JSON.stringify(payload));
@@ -354,11 +501,14 @@
     try {
       const payload = JSON.parse(decodeBase64Url(encoded));
       if (!Array.isArray(payload.checked)) return;
+      state.deleted = new Set(Array.isArray(payload.deleted) ? payload.deleted : []);
+      state.customItems = Array.isArray(payload.customItems) ? payload.customItems : [];
+      rebuildItems();
       state.checked = new Set(payload.checked.filter((id) => items.some((item) => item.id === id)));
       state.required = new Set((payload.required || []).filter((id) => items.some((item) => item.id === id)));
       state.purchase = new Set((payload.purchase || []).filter((id) => items.some((item) => item.id === id)));
       saveLocalState();
-      showToast("共有リンクのチェック状態を読み込みました。");
+      showToast("共有リンクの内容を読み込みました。");
     } catch {
       showToast("共有リンクを読み込めませんでした。");
     }
@@ -369,6 +519,8 @@
       checked: Array.from(state.checked),
       required: Array.from(state.required),
       purchase: Array.from(state.purchase),
+      deleted: Array.from(state.deleted),
+      customItems: state.customItems,
       updatedAt: new Date().toISOString()
     };
     const encoded = encodeBase64Url(JSON.stringify(payload));
@@ -389,6 +541,8 @@
       checked: Array.from(state.checked),
       required: Array.from(state.required),
       purchase: Array.from(state.purchase),
+      deleted: Array.from(state.deleted),
+      customItems: state.customItems,
       updatedAt: new Date().toISOString()
     };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -408,12 +562,16 @@
       try {
         const payload = JSON.parse(String(reader.result || "{}"));
         if (!Array.isArray(payload.checked)) throw new Error("invalid payload");
+        state.deleted = new Set(Array.isArray(payload.deleted) ? payload.deleted : []);
+        state.customItems = Array.isArray(payload.customItems) ? payload.customItems : [];
+        rebuildItems();
+        hydrateCategories();
         state.checked = new Set(payload.checked.filter((id) => items.some((item) => item.id === id)));
         state.required = new Set((payload.required || []).filter((id) => items.some((item) => item.id === id)));
         state.purchase = new Set((payload.purchase || []).filter((id) => items.some((item) => item.id === id)));
         saveLocalState();
         render();
-        showToast("チェック状態を読み込みました。");
+        showToast("チェック状態と項目を読み込みました。");
       } catch {
         showToast("読み込みに失敗しました。");
       } finally {
@@ -448,6 +606,13 @@
 
   function unique(list) {
     return Array.from(new Set(list.filter(Boolean)));
+  }
+
+  function pruneState() {
+    const validIds = new Set(items.map((item) => item.id));
+    state.checked = new Set(Array.from(state.checked).filter((id) => validIds.has(id)));
+    state.required = new Set(Array.from(state.required).filter((id) => validIds.has(id)));
+    state.purchase = new Set(Array.from(state.purchase).filter((id) => validIds.has(id)));
   }
 
   function encodeBase64Url(text) {

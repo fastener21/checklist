@@ -119,6 +119,12 @@ select:hover {
   background: #fdfefe;
 }
 
+.button.primary {
+  color: #ffffff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
 .button.danger {
   color: var(--accent);
 }
@@ -294,6 +300,69 @@ select {
   margin-bottom: 10px;
 }
 
+.item-form {
+  margin: 0 0 14px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(23, 48, 71, 0.08);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.form-grid label {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.form-grid label.wide {
+  grid-column: 1 / -1;
+}
+
+.form-grid input {
+  min-height: 40px;
+  width: 100%;
+  padding: 0 11px;
+  color: var(--ink);
+  background: #fbfdff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: 0;
+}
+
+.form-grid input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 79, 114, 0.12);
+}
+
+.form-options,
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.form-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 10px;
+  color: var(--ink);
+  background: #f7fafc;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
 .filter-chips {
   display: flex;
   flex-wrap: wrap;
@@ -465,9 +534,9 @@ select {
 
 .flags {
   display: grid;
-  grid-template-columns: repeat(2, minmax(58px, 1fr));
+  grid-template-columns: repeat(3, minmax(58px, 1fr));
   gap: 6px;
-  min-width: 126px;
+  min-width: 190px;
 }
 
 .flag {
@@ -492,6 +561,10 @@ select {
 
 .flag-purchase.is-on {
   background: var(--amber);
+}
+
+.flag-delete {
+  color: var(--accent);
 }
 
 .empty {
@@ -580,6 +653,10 @@ select {
     flex: 1 1 148px;
   }
 
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
   .item-row {
     grid-template-columns: 30px minmax(0, 1fr);
   }
@@ -592,6 +669,6 @@ select {
   }
 
   .flags {
-    width: min(100%, 220px);
+    width: min(100%, 330px);
   }
 }

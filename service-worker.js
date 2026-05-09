@@ -1,10 +1,10 @@
-const CACHE_NAME = "brussels-checklist-v2";
+const CACHE_NAME = "brussels-checklist-v3";
 const ASSETS = [
   "./",
   "./index.html",
-  "./app/styles.css?v=2",
-  "./app/app.js?v=2",
-  "./data/checklist.js?v=2",
+  "./app/styles.css?v=3",
+  "./app/app.js?v=3",
+  "./data/checklist.js?v=3",
   "./data/checklist.json",
   "./assets/app-icon.svg",
   "./manifest.webmanifest"

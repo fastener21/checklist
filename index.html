@@ -7,9 +7,9 @@
     <title>赴任持ち物リスト ブリュッセル版</title>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="app/styles.css?v=2">
-    <script src="data/checklist.js?v=2" defer></script>
-    <script src="app/app.js?v=2" defer></script>
+    <link rel="stylesheet" href="app/styles.css?v=3">
+    <script src="data/checklist.js?v=3" defer></script>
+    <script src="app/app.js?v=3" defer></script>
   </head>
   <body>
     <header class="topbar">
@@ -107,6 +107,10 @@
       </section>
 
       <section class="bulk-row" aria-label="一括操作">
+        <button id="toggleAddForm" class="button primary">
+          <span aria-hidden="true">＋</span>
+          項目を追加
+        </button>
         <button id="checkVisible" class="button secondary">
           <span aria-hidden="true">✓</span>
           表示分を準備済み
@@ -120,6 +124,39 @@
           リセット
         </button>
       </section>
+
+      <form id="addForm" class="item-form" hidden>
+        <div class="form-grid">
+          <label>
+            <span>アイテム名</span>
+            <input id="newItemName" type="text" required placeholder="例: 常備薬の予備">
+          </label>
+          <label>
+            <span>大カテゴリ</span>
+            <input id="newMajor" type="text" list="categoryOptions" required placeholder="例: 医療・衛生">
+          </label>
+          <label>
+            <span>中カテゴリ</span>
+            <input id="newMiddle" type="text" placeholder="例: 薬">
+          </label>
+          <label class="wide">
+            <span>備考</span>
+            <input id="newNote" type="text" placeholder="必要ならメモ">
+          </label>
+        </div>
+        <div class="form-options">
+          <label><input id="newAir" type="checkbox"> 航空便</label>
+          <label><input id="newSea" type="checkbox"> 船便</label>
+          <label><input id="newCarry" type="checkbox"> 手荷物</label>
+          <label><input id="newRequired" type="checkbox"> 必須</label>
+          <label><input id="newPurchase" type="checkbox"> 購入必要</label>
+        </div>
+        <div class="form-actions">
+          <button class="button primary" type="submit">追加する</button>
+          <button id="cancelAdd" class="button secondary" type="button">キャンセル</button>
+        </div>
+      </form>
+      <datalist id="categoryOptions"></datalist>
 
       <div id="activeFilters" class="filter-chips" aria-live="polite"></div>
       <section id="list" class="checklist" aria-label="持ち物"></section>
