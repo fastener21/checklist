@@ -1,0 +1,16 @@
+{
+  "name": "赴任持ち物リスト ブリュッセル版",
+  "short_name": "持ち物リスト",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#1d4f72",
+  "icons": [
+    {
+      "src": "assets/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
